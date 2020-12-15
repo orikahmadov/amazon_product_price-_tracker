@@ -2,7 +2,9 @@ import requests, os, time, smtplib
 from bs4 import BeautifulSoup
 from email.message import EmailMessage
 
-"""THIS IS A PYTHON SCRIPT TO TRACK THE CHANGES OF PRICE OF THE  GIVEN AMAZON PRODUCT """
+"""THIS IS A PYTHON SCRIPT TO TRACK THE CHANGES OF PRICE OF THE  GIVEN AMAZON PRODUCT, IN ORDER TO GET THIS SCRIPT WORK JUST GET THE PORT AND SMTP EMAIL OF YOUR EMAIL PROVIDER 
+IN THIS CASE MINE IS GMAIL SO I USE 465 PORT WHICH IS SECURED TSL AND I RECOMMEND YOU TO SAVE YOUR SMTP PASSWORD IN USER VARIABLE ENVIRONMENT DO NOT INCLUDE YOUR PASSWORD IN YOUR SCRIPT
+"""
 
 
 def automate_price_checking():
@@ -22,7 +24,7 @@ def automate_price_checking():
     message_subject = product_title
     product_link =  request.url
     message_content =  f" New price for {product_title} is {final_price}€ \n\n Click the link to get the product {product_link}"
-    to_email = "orkhan_ahmadov47@hotmail.com"
+    to_email = "orkhan_ahmadov47@hotmail.com" 
     if round(final_price) < 290: #Setting the expected price of the product here to compare with the current price number
         print(f"Checked the given price and sending email to {to_email}")
         send_mail(to_email, message_subject, message_content)
